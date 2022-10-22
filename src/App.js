@@ -50,11 +50,11 @@ const GlobalStyle = createGlobalStyle`
     width: 200px;
     top: 50px;
     right: -160%;
-    background: #fff;
     padding: 10px 5px;
     border-radius: 8px;
     justify-content: center;
     align-items: center;
+    background: #fff;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   }
 
@@ -92,11 +92,11 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .mapboxgl-popup-content {
+    background: #ededed !important;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: #FFFFFF;
     border: 1px solid rgba(213, 169, 107, 0.94);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 29px !important;
@@ -105,8 +105,22 @@ const GlobalStyle = createGlobalStyle`
 
 
     img {
-      width: 260px;
+      width: 280px;
       margin-bottom: 30px;
+    }
+
+    .model {
+      height: 200px;
+      border: 3px dashed #d7d7d7;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 18px;
+      color: #939393;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 80%;
+      margin-bottom: 20px;
     }
 
     .title {

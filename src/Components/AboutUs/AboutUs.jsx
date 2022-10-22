@@ -6,31 +6,49 @@ const persons = [
   {
     title: "Назаренко Т.А.",
     subtitle: "преподаватель истории и обществознания (научный руководитель)",
+    img: "4.jpg",
   },
   {
     title: "Славинских А.О.",
     subtitle: "преподаватель истории и обществознания (научный руководитель)",
+    img: "6.jpg",
   },
   {
     title: "Мухаметшафиков Р.Р.",
     subtitle:
       "преподаватель кафедры информационных систем и программирования (разработчик сайта)",
+    img: "1.jpg",
   },
   {
     title: "Осетров Дмитрий",
     subtitle: "студент гр. СиСа 21/9-1 (Наш теоретик)",
+    img: "3.jpg",
   },
   {
     title: "Величко Валерия",
     subtitle: "студентка гр. ГД 21/9-1 (Наш дизайнер сайта)",
+    img: "2.jpg",
   },
   {
     title: "Якимов Даниил",
     subtitle: "студент гр. НКС – 22/9-1 (Наш создатель 3D-макетов)",
+    img: "5.jpg",
   },
 ];
 
 const AboutUs = ({ setModal }) => {
+  const renderPersons = (items) => {
+    return items.map(({ title, subtitle, img }) => {
+      return (
+        <PersonCard>
+          <img src={`/img/team/${img}`} alt="" />
+          <PersonName>{title}</PersonName>
+          <SubTitle>{subtitle}</SubTitle>
+        </PersonCard>
+      );
+    });
+  };
+
   return (
     <Wrapper>
       <Close
@@ -48,16 +66,8 @@ const AboutUs = ({ setModal }) => {
           Сургута и Сургутского района ХМАО-Югры
         </MapTitle>
         <Text>Команда СИЭУиП</Text>
-        <List>
-          {persons.map(({ title, subtitle }) => {
-            return (
-              <PersonCard>
-                <PersonName>{title}</PersonName>
-                <SubTitle>{subtitle}</SubTitle>
-              </PersonCard>
-            );
-          })}
-        </List>
+        <List>{renderPersons(persons.slice(0, 3))}</List>
+        <List>{renderPersons(persons.slice(3))}</List>
         <Footer />
       </Content>
     </Wrapper>
@@ -108,7 +118,6 @@ const Wrapper = styled.div`
 `;
 
 const Content = styled.div`
-  max-width: 1000px;
   width: 100%;
   display: flex;
   align-items: center;
@@ -120,28 +129,33 @@ const Content = styled.div`
 const Text = styled.div`
   font-size: 30px;
   font-weight: 600;
+  margin-bottom: 20px;
   color: #1e1e1e;
 `;
 
 const List = styled.div`
-  margin-top: 20px;
   text-align: left;
   font-size: 18px;
   display: flex;
-  flex-direction: column;
   flex-wrap: wrap;
 `;
 
 const PersonCard = styled.div`
   line-height: 30px;
   background: #fff;
-  border: 1px solid rgba(213, 169, 107, 0.94);
-  border-radius: 29px !important;
-  padding: 30px !important;
+  border: 1px solid rgba(232, 196, 149, 0.94);
+  border-radius: 29px;
+  padding: 20px;
   text-align: center;
-  max-width: 400px;
+  max-width: 300px;
   width: 100%;
   margin: 10px;
+
+  img {
+    width: 200px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
 `;
 
 const PersonName = styled.div`

@@ -4,7 +4,7 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import { places } from "./places";
 
 mapboxgl.accessToken =
-  "pk.eyJ1IjoiZmxhbWUxODAwIiwiYSI6ImNsOWd5dHZlbTAxNXIzdW9nc20ybDh5OWUifQ.0RppLobjqyCH_GqZnQ3iaQ";
+  "pk.eyJ1IjoiZmxhbWUxODAwIiwiYSI6ImNsOWpzdDE4ajBjdnEzb283cXhmcXRsNjgifQ.3wQ-n7-u7gmuyzKXo0MMzA";
 
 export default function useMapbox(
   container = "map",
@@ -22,13 +22,17 @@ export default function useMapbox(
     });
 
     places.forEach((place) => {
-      const { title, address, coords, date, type } = place;
+      const { title, address, coords, date, type, img } = place;
 
       const elMarker = document.createElement("div");
       elMarker.innerHTML = `<div class="marker"><div class='marker-name'>${title}</div></div>`;
 
+      const image = img
+        ? `<img src="/img/${img}" alt="Модель места" />`
+        : `<div class="model">модель в разработке</div>`;
+
       const card = `
-        <img src="/img/model.png" alt="Модель места" />
+        ${image}
         <h3 class="title">${title}</h3>
         <span class="date">${date}</span>
         <span class="type">${type}</span>
